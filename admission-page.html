@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admissions Portal | MT/Kandenuwara T.M.V</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-dark: #023E8A;
+      --blue: #0077B6;
+      --blue-mid: #0096C7;
+      --blue-light: #90E0EF;
+      --sky: #CAF0F8;
+      --sky-pale: #E8F8FD;
+      --white: #FFFFFF;
+      --text: #01315e;
+      --text-mid: #2c5f8a;
+      --text-light: #5a8fbb;
+      --border: rgba(0,119,182,0.22);
+      --success: #2D6A4F;
+      --warning: #E9A100;
+      --pending: #C97A00;
+      --shadow: 0 10px 30px rgba(0,119,182,0.12);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: linear-gradient(145deg, #daf4fc 0%, #b8ecf8 45%, #cdf2fb 100%);
+      min-height: 100vh;
+      color: var(--text);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,119,182,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,119,182,0.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -40px;
+      background: var(--blue-dark);
+      color: white;
+      padding: .75rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      z-index: 20;
+    }
+
+    .skip-link:focus { top: 1rem; }
+
+    header {
+      position: relative;
+      z-index: 10;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+      padding: 1rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border-bottom: 3px solid var(--blue-light);
+      flex-wrap: wrap;
+    }
+
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .header-logo {
+      width: 56px;
+      height: 56px;
+      object-fit: contain;
+      border-radius: 50%;
+      background: white;
+      padding: 3px;
+      box-shadow: 0 0 0 2px rgba(144,224,239,0.5);
+    }
+
+    .brand-text h1 {
+      font-family: 'Merriweather', serif;
+      font-size: 1rem;
+      color: white;
+      line-height: 1.2;
+    }
+
+    .brand-text p {
+      font-size: 0.72rem;
+      color: var(--blue-light);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    nav {
+      display: flex;
+      gap: .65rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.86);
+      text-decoration: none;
+      font-size: .86rem;
+      letter-spacing: .06em;
+      padding: .7rem 1.15rem;
+      border-radius: 8px;
+      text-transform: uppercase;
+      font-weight: 700;
+      min-width: 44px;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: .2s ease;
+    }
+
+    nav a:hover, nav a:focus-visible {
+      background: rgba(255,255,255,0.12);
+      color: white;
+    }
+
+    nav a.active {
+      background: rgba(255,255,255,0.18);
+      color: white;
+    }
+
+    .hero-banner {
+      position: relative;
+      z-index: 5;
+      background: linear-gradient(120deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+      padding: 3.5rem 2rem;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(144,224,239,0.15) 0, transparent 55%),
+        radial-gradient(ellipse at 80% 50%, rgba(144,224,239,0.1) 0, transparent 50%);
+      pointer-events: none;
+    }
+
+    .breadcrumb {
+      font-size: .76rem;
+      color: var(--blue-light);
+      letter-spacing: .1em;
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .breadcrumb a { color: var(--blue-light); text-decoration: none; }
+
+    .hero-banner h2 {
+      position: relative;
+      font-family: 'Merriweather', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: white;
+      margin-bottom: .8rem;
+    }
+
+    .hero-banner p:last-child {
+      position: relative;
+      color: rgba(255,255,255,0.82);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    main {
+      position: relative;
+      z-index: 5;
+      max-width: 1120px;
+      margin: 2.5rem auto 0;
+      padding: 0 1.4rem 3rem;
+    }
+
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 1.6fr;
+      gap: 2rem;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.82);
+      border: 1.5px solid var(--border);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-head {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue));
+      padding: 1.15rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .card-head h3 {
+      color: white;
+      font-family: 'Merriweather', serif;
+      font-size: 1rem;
+    }
+
+    .card-body { padding: 1.5rem; }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .stat-box {
+      border-radius: 14px;
+      padding: 1.2rem;
+      border: 1.5px solid rgba(0,119,182,0.12);
+      background: rgba(232,248,253,0.86);
+    }
+
+    .stat-box h4 {
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--text-light);
+      margin-bottom: .55rem;
+    }
+
+    .stat-number {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1;
+      margin-bottom: .45rem;
+    }
+
+    .approved .stat-number { color: var(--success); }
+    .pending .stat-number { color: var(--pending); }
+
+    .stat-note {
+      color: var(--text-mid);
+      font-size: .94rem;
+      line-height: 1.5;
+    }
+
+    .progress-wrap {
+      margin-top: 1.2rem;
+      background: rgba(202,240,248,0.5);
+      border: 1px solid rgba(0,119,182,0.12);
+      border-radius: 12px;
+      padding: 1rem;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: .92rem;
+      color: var(--text-mid);
+      margin-bottom: .7rem;
+      flex-wrap: wrap;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 12px;
+      background: rgba(0,119,182,0.12);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 75%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--success), #40916C);
+      border-radius: inherit;
+    }
+
+    .info-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .info-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0,119,182,0.1);
+    }
+
+    .info-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+    }
+
+    .info-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      color: var(--text-light);
+      margin-bottom: .25rem;
+      font-weight: 700;
+    }
+
+    .info-value {
+      font-size: .98rem;
+      color: var(--text);
+      font-weight: 600;
+      line-height: 1.6;
+    }
+
+    .action-panel {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.4rem;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      border: none;
+      border-radius: 10px;
+      padding: .95rem 1.2rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      cursor: pointer;
+      flex: 1 1 200px;
+    }
+
+    .btn:hover, .btn:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,119,182,0.18);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+      color: white;
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--blue-dark);
+      border: 1.5px solid var(--border);
+    }
+
+    .table-card table th,
+    .table-card table td {
+      text-align: left;
+      padding: .9rem .8rem;
+      border-bottom: 1px solid rgba(0,119,182,0.1);
+      font-size: .95rem;
+    }
+
+    .table-card table th {
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .76rem;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      padding: .35rem .7rem;
+      border-radius: 999px;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .status.approved { background: rgba(45,106,79,0.12); color: var(--success); }
+    .status.pending { background: rgba(201,122,0,0.14); color: var(--pending); }
+
+    .note-box {
+      margin-top: 1rem;
+      background: rgba(202,240,248,0.35);
+      border: 1px solid rgba(0,119,182,0.12);
+      border-radius: 12px;
+      padding: 1rem;
+      color: var(--text-mid);
+      line-height: 1.6;
+    }
+
+    footer {
+      position: relative;
+      z-index: 5;
+      text-align: center;
+      padding: 1.4rem;
+      margin-top: .5rem;
+      border-top: 1px solid rgba(0,119,182,0.15);
+      color: rgba(2,62,138,0.58);
+      font-size: .76rem;
+      letter-spacing: .08em;
+    }
+
+    @media (max-width: 900px) {
+      .dashboard-grid { grid-template-columns: 1fr; }
+      header { padding: 1rem 1.2rem; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-banner { padding: 2.7rem 1rem; }
+      .stat-grid { grid-template-columns: 1fr; }
+      .btn-row { flex-direction: column; }
+      nav a { font-size: .74rem; padding: .6rem .8rem; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header>
+    <div class="header-brand">
+      <img class="header-logo" src="../photo_2025-08-16_10-23-57.jpg" alt="MT Kandenuwara Tamil Maha Vidyalaya logo" width="56" height="56" />
+      <div class="brand-text">
+        <h1>MT/Kandenuwara Tamil Maha Vidyalaya</h1>
+        <p>Admissions Portal</p>
+      </div>
+    </div>
+
+    <nav aria-label="Primary navigation">
+      <a href="#home" class="active">Home</a>
+      <a href="#register">Register</a>
+    </nav>
+  </header>
+
+  <section class="hero-banner" id="home">
+    <p class="breadcrumb"><a href="#home">Home</a> &nbsp;/&nbsp; Admissions</p>
+    <h2>Student Admission Dashboard</h2>
+    <p>This admissions page follows the style of your existing school webpage and highlights the current approved admissions count, pending approvals, and quick action buttons for navigation and registration.</p>
+  </section>
+
+  <main id="main-content">
+    <div class="dashboard-grid">
+      <section>
+        <article class="card">
+          <div class="card-head">
+            <h3>Admission Overview</h3>
+          </div>
+          <div class="card-body">
+            <div class="stat-grid">
+              <div class="stat-box approved">
+                <h4>Approved Admissions</h4>
+                <div class="stat-number" id="approvedCount">48</div>
+                <p class="stat-note">Applications that have completed review and received approval.</p>
+              </div>
+              <div class="stat-box pending">
+                <h4>Pending Approvals</h4>
+                <div class="stat-number" id="pendingCount">16</div>
+                <p class="stat-note">Applications waiting for document verification or final decision.</p>
+              </div>
+            </div>
+
+            <div class="progress-wrap" aria-label="Approval progress summary">
+              <div class="progress-meta">
+                <span>Total applications: <strong id="totalCount">64</strong></span>
+                <span>Approval rate: <strong id="approvalRate">75%</strong></span>
+              </div>
+              <div class="progress-bar" aria-hidden="true">
+                <div class="progress-fill" id="progressFill"></div>
+              </div>
+            </div>
+
+            <div class="action-panel" id="register">
+              <div class="btn-row">
+                <a href="#home" class="btn btn-secondary">Home</a>
+                <a href="#register-form" class="btn btn-primary">Register</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card" style="margin-top:1.4rem;">
+          <div class="card-head">
+            <h3>Admission Information</h3>
+          </div>
+          <div class="card-body info-list">
+            <div class="info-item">
+              <div class="info-icon">01</div>
+              <div>
+                <p class="info-label">Academic Year</p>
+                <p class="info-value">2026 student intake is currently being processed for new registrations.</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">02</div>
+              <div>
+                <p class="info-label">Required Documents</p>
+                <p class="info-value">Birth certificate, previous school record, guardian identification, and address confirmation.</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">03</div>
+              <div>
+                <p class="info-label">Office Support</p>
+                <p class="info-value">Admissions office support is available on school working days during office hours.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <article class="card table-card">
+          <div class="card-head">
+            <h3>Recent Admission Status</h3>
+          </div>
+          <div class="card-body">
+            <table aria-label="Recent admission records">
+              <thead>
+                <tr>
+                  <th>Application ID</th>
+                  <th>Student Name</th>
+                  <th>Grade</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>ADM-2026-014</td>
+                  <td>A. Kishanth</td>
+                  <td>Grade 6</td>
+                  <td><span class="status approved">Approved</span></td>
+                </tr>
+                <tr>
+                  <td>ADM-2026-018</td>
+                  <td>S. Nirosha</td>
+                  <td>Grade 7</td>
+                  <td><span class="status pending">Pending</span></td>
+                </tr>
+                <tr>
+                  <td>ADM-2026-021</td>
+                  <td>M. Tharshan</td>
+                  <td>Grade 8</td>
+                  <td><span class="status approved">Approved</span></td>
+                </tr>
+                <tr>
+                  <td>ADM-2026-027</td>
+                  <td>R. Yalini</td>
+                  <td>Grade 9</td>
+                  <td><span class="status pending">Pending</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="note-box" id="register-form">
+              Use the <strong>Register</strong> button to connect this page to your admission application form or online registration system. You can replace the sample counts with live data from your database later.
+            </div>
+          </div>
+        </article>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    © 2026 MT/Kandenuwara Tamil Maha Vidyalaya · Admission Management Page
+  </footer>
+
+  <script>
+    const approved = 48;
+    const pending = 16;
+    const total = approved + pending;
+    const rate = Math.round((approved / total) * 100);
+
+    document.getElementById('approvedCount').textContent = approved;
+    document.getElementById('pendingCount').textContent = pending;
+    document.getElementById('totalCount').textContent = total;
+    document.getElementById('approvalRate').textContent = rate + '%';
+    document.getElementById('progressFill').style.width = rate + '%';
+  </script>
+</body>
+</html>
