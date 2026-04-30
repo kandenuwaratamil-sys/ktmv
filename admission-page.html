@@ -166,7 +166,28 @@
       grid-template-columns: 1fr 1.5fr;
       gap: 2rem;
     }
+ * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: linear-gradient(145deg, #daf4fc 0%, #b8ecf8 45%, #cdf2fb 100%);
+      min-height: 100vh;
+      color: var(--text);
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,119,182,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,119,182,0.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
     /* ── Card base ── */
     .card {
       background: rgba(255,255,255,0.82);
