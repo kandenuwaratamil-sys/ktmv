@@ -63,7 +63,7 @@
 
     .skip-link:focus { top: 1rem; }
 
-    header {
+     header {
       position: relative;
       z-index: 10;
       background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
@@ -71,9 +71,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
       border-bottom: 3px solid var(--blue-light);
-      flex-wrap: wrap;
     }
 
     .header-brand {
@@ -95,40 +93,37 @@
     .brand-text h1 {
       font-family: 'Merriweather', serif;
       font-size: 1rem;
+      font-weight: 700;
       color: white;
       line-height: 1.2;
     }
 
     .brand-text p {
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--blue-light);
-      letter-spacing: .12em;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
     }
 
     nav {
       display: flex;
-      gap: .65rem;
-      flex-wrap: wrap;
-      align-items: center;
+      gap: 0.3rem;
     }
 
     nav a {
-      color: rgba(255,255,255,0.86);
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
-      font-size: .86rem;
-      letter-spacing: .06em;
-      padding: .7rem 1.15rem;
-      border-radius: 8px;
+      font-size: 0.8rem;
+      letter-spacing: 0.07em;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
       text-transform: uppercase;
-      font-weight: 700;
-      min-width: 44px;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: .2s ease;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
     }
+
+    nav a:hover { background: rgba(255,255,255,0.12); color: white; }
+    nav a.active { background: rgba(255,255,255,0.18); color: white; }
 
     nav a:hover, nav a:focus-visible {
       background: rgba(255,255,255,0.12);
