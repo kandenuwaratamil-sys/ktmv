@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teachers & Staff | MT/Kandenuwara T.M.V</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue-dark: #023E8A;
+      --blue: #0077B6;
+      --blue-mid: #0096C7;
+      --blue-light: #90E0EF;
+      --sky: #CAF0F8;
+      --sky-pale: #E8F8FD;
+      --white: #FFFFFF;
+      --text: #01315e;
+      --text-mid: #2c5f8a;
+      --text-light: #5a8fbb;
+      --border: rgba(0,119,182,0.22);
+      --success: #2D6A4F;
+      --warning: #E9A100;
+      --shadow: 0 10px 30px rgba(0,119,182,0.12);
+      --gold: #B8860B;
+      --silver: #4A708B;
+      --bronze: #7B4F2E;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: linear-gradient(145deg, #daf4fc 0%, #b8ecf8 45%, #cdf2fb 100%);
+      min-height: 100vh;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,119,182,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,119,182,0.06) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: relative; z-index: 10;
+      background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%);
+      padding: 1rem 3rem;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; border-bottom: 3px solid var(--blue-light); flex-wrap: wrap;
+    }
+    .header-brand { display: flex; align-items: center; gap: 1rem; }
+    .header-logo {
+      width: 56px; height: 56px; object-fit: contain; border-radius: 50%;
+      background: white; padding: 3px; box-shadow: 0 0 0 2px rgba(144,224,239,0.5);
+    }
+    .brand-text h1 { font-family: 'Merriweather', serif; font-size: 1rem; color: white; line-height: 1.2; }
+    .brand-text p { font-size: .72rem; color: var(--blue-light); letter-spacing: .12em; text-transform: uppercase; }
+    nav { display: flex; gap: .65rem; flex-wrap: wrap; align-items: center; }
+    nav a {
+      color: rgba(255,255,255,0.86); text-decoration: none; font-size: .86rem;
+      letter-spacing: .06em; padding: .7rem 1.15rem; border-radius: 8px;
+      text-transform: uppercase; font-weight: 700; display: inline-flex;
+      align-items: center; transition: .2s ease;
+    }
+    nav a:hover { background: rgba(255,255,255,0.12); color: white; }
+    nav a.active { background: rgba(255,255,255,0.18); color: white; }
+
+    /* ── HERO ── */
+    .hero-banner {
+      position: relative; z-index: 5;
+      background: linear-gradient(120deg, var(--blue-dark) 0%, var(--blue-mid) 100%);
+      padding: 3.5rem 2rem; text-align: center; overflow: hidden;
+    }
+    .hero-banner::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(144,224,239,0.15) 0, transparent 55%),
+        radial-gradient(ellipse at 80% 50%, rgba(144,224,239,0.1) 0, transparent 50%);
+      pointer-events: none;
+    }
+    .breadcrumb { font-size: .76rem; color: var(--blue-light); letter-spacing: .1em; margin-bottom: 1rem; position: relative; }
+    .breadcrumb a { color: var(--blue-light); text-decoration: none; }
+    .hero-banner h2 {
+      position: relative; font-family: 'Merriweather', serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem); color: white; margin-bottom: .8rem;
+    }
+    .hero-banner p.sub {
+      position: relative; color: rgba(255,255,255,0.82);
+      max-width: 700px; margin: 0 auto; line-height: 1.7; font-size: 1rem;
+    }
+    .hero-stats {
+      position: relative; display: flex; justify-content: center; gap: 2.5rem;
+      flex-wrap: wrap; margin-top: 2rem;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat strong { display: block; font-size: 2rem; font-weight: 700; color: var(--blue-light); font-family: 'Merriweather', serif; line-height: 1; }
+    .hero-stat span { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: rgba(255,255,255,0.65); margin-top: .3rem; display: block; }
+
+    /* ── MAIN ── */
+    main { position: relative; z-index: 5; max-width: 1250px; margin: 0 auto; padding: 2.5rem 1.4rem 4rem; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex; gap: .7rem; flex-wrap: wrap; align-items: center;
+      margin-bottom: 2rem; background: rgba(255,255,255,0.82);
+      border: 1.5px solid var(--border); border-radius: 14px;
+      padding: 1rem 1.4rem; backdrop-filter: blur(10px);
+    }
+    .filter-label { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-light); font-weight: 700; margin-right: .5rem; }
+    .filter-btn {
+      border: 1.5px solid var(--border); background: white; color: var(--text-mid);
+      padding: .45rem 1.1rem; border-radius: 999px; font-size: .82rem; font-weight: 700;
+      cursor: pointer; transition: .2s ease; letter-spacing: .04em;
+    }
+    .filter-btn:hover { background: var(--sky); border-color: var(--blue-mid); color: var(--blue-dark); }
+    .filter-btn.active { background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid)); color: white; border-color: transparent; }
+    .search-input {
+      margin-left: auto; padding: .5rem 1rem; border: 1.5px solid var(--border);
+      border-radius: 999px; font-size: .88rem; background: white;
+      color: var(--text); outline: none; width: 200px;
+      font-family: 'Source Sans 3', sans-serif; transition: .2s;
+    }
+    .search-input:focus { border-color: var(--blue-mid); box-shadow: 0 0 0 3px rgba(0,150,199,0.12); }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.5rem; margin-top: 2.5rem;
+    }
+    .section-title h3 {
+      font-family: 'Merriweather', serif; font-size: 1.2rem; color: var(--blue-dark);
+    }
+    .section-title .pill {
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+      color: white; padding: .2rem .75rem; border-radius: 999px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .section-divider {
+      flex: 1; height: 1.5px;
+      background: linear-gradient(90deg, rgba(0,119,182,0.3), transparent);
+    }
+
+    /* ── LEADERSHIP ROW ── */
+    .leadership-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 0;
+    }
+
+    /* ── TEACHER GRID ── */
+    .teacher-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* ── TEACHER CARD ── */
+    .teacher-card {
+      background: rgba(255,255,255,0.88);
+      border: 1.5px solid var(--border);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform .22s ease, box-shadow .22s ease;
+      display: flex; flex-direction: column;
+    }
+    .teacher-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px rgba(0,119,182,0.18);
+    }
+
+    /* card top band */
+    .card-band {
+      height: 6px;
+      background: linear-gradient(90deg, var(--blue-dark), var(--blue-mid), var(--blue-light));
+    }
+    .card-band.principal-band { background: linear-gradient(90deg, #B8860B, #FFD700, #B8860B); }
+    .card-band.vp-band { background: linear-gradient(90deg, #4A708B, #87CEEB, #4A708B); }
+    .card-band.ap-band { background: linear-gradient(90deg, #7B4F2E, #CD853F, #7B4F2E); }
+
+    /* avatar row */
+    .card-top {
+      display: flex; align-items: flex-start; gap: 1.1rem;
+      padding: 1.3rem 1.3rem .8rem;
+    }
+    .avatar {
+      width: 68px; height: 68px; border-radius: 50%; flex-shrink: 0;
+      border: 3px solid white;
+      box-shadow: 0 4px 14px rgba(0,119,182,0.22);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; font-weight: 700; color: white;
+      font-family: 'Merriweather', serif; letter-spacing: .02em;
+      background: linear-gradient(135deg, var(--blue-dark), var(--blue-mid));
+    }
+    .avatar.principal-av { background: linear-gradient(135deg, #B8860B, #DAA520); }
+    .avatar.vp-av { background: linear-gradient(135deg, #2c5f8a, #4A90D9); }
+    .avatar.ap-av { background: linear-gradient(135deg, #7B4F2E, #A0522D); }
+    .avatar.female { background: linear-gradient(135deg, #6A1E6B, #A855A7); }
+    .avatar.green  { background: linear-gradient(135deg, #1A5C3B, #2D8A5E); }
+    .avatar.teal   { background: linear-gradient(135deg, #0A6670, #0E9AA7); }
+    .avatar.maroon { background: linear-gradient(135deg, #6B1717, #B22222); }
+    .avatar.indigo { background: linear-gradient(135deg, #2E1B6E, #5C3BC9); }
+    .avatar.olive  { background: linear-gradient(135deg, #4B5320, #778B3A); }
+    .avatar.rust   { background: linear-gradient(135deg, #7B3100, #C0521F); }
+    .avatar.navy   { background: linear-gradient(135deg, #001F5B, #0A3D8F); }
+
+    .card-meta { flex: 1; }
+    .teacher-name {
+      font-family: 'Merriweather', serif; font-size: 1rem; font-weight: 700;
+      color: var(--blue-dark); margin-bottom: .18rem; line-height: 1.3;
+    }
+    .teacher-role {
+      font-size: .72rem; text-transform: uppercase; letter-spacing: .12em;
+      font-weight: 700; margin-bottom: .4rem;
+    }
+    .role-principal { color: #B8860B; }
+    .role-vp { color: #2c5f8a; }
+    .role-ap { color: #7B4F2E; }
+    .role-teacher { color: var(--blue-mid); }
+    .teacher-subject {
+      font-size: .85rem; color: var(--text-mid); font-weight: 600;
+      background: rgba(0,119,182,0.08); display: inline-block;
+      padding: .18rem .6rem; border-radius: 6px; margin-bottom: .3rem;
+    }
+    .teacher-exp {
+      font-size: .8rem; color: var(--text-light);
+    }
+    .badge-row { display: flex; gap: .4rem; flex-wrap: wrap; margin-top: .4rem; }
+    .badge {
+      font-size: .65rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      padding: .18rem .55rem; border-radius: 6px;
+    }
+    .badge-gold   { background: rgba(184,134,11,0.12);  color: #8B6914; }
+    .badge-blue   { background: rgba(0,119,182,0.11);   color: var(--blue-dark); }
+    .badge-green  { background: rgba(45,106,79,0.12);   color: var(--success); }
+    .badge-purple { background: rgba(90,30,160,0.11);   color: #5A1EA0; }
+
+    /* divider */
+    .card-divider { height: 1px; background: rgba(0,119,182,0.1); margin: 0 1.3rem; }
+
+    /* details section */
+    .card-details { padding: .9rem 1.3rem; display: grid; gap: .55rem; }
+    .detail-row { display: flex; align-items: center; gap: .6rem; }
+    .detail-dot {
+      width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+      background: var(--blue-mid);
+    }
+    .detail-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .1em; color: var(--text-light); font-weight: 700; width: 80px; flex-shrink: 0; }
+    .detail-val   { font-size: .88rem; color: var(--text); font-weight: 600; line-height: 1.4; }
+
+    /* activity bars */
+    .card-activities { padding: .8rem 1.3rem 1.3rem; }
+    .act-title {
+      font-size: .72rem; text-transform: uppercase; letter-spacing: .12em;
+      color: var(--text-light); font-weight: 700; margin-bottom: .75rem;
+    }
+    .act-item { margin-bottom: .65rem; }
+    .act-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: .28rem; }
+    .act-name { font-size: .82rem; font-weight: 600; color: var(--text-mid); }
+    .act-pct  { font-size: .78rem; font-weight: 700; color: var(--blue-dark); }
+    .act-bar  { width: 100%; height: 8px; background: rgba(0,119,182,0.1); border-radius: 999px; overflow: hidden; }
+    .act-fill { height: 100%; border-radius: 999px; transition: width 1.4s cubic-bezier(.25,.46,.45,.94); width: 0; }
+    .fill-blue   { background: linear-gradient(90deg, var(--blue-dark), var(--blue-mid)); }
+    .fill-green  { background: linear-gradient(90deg, #1A5C3B, #40916C); }
+    .fill-purple { background: linear-gradient(90deg, #5A1EA0, #9B59B6); }
+    .fill-orange { background: linear-gradient(90deg, #B8430A, #E06820); }
+    .fill-teal   { background: linear-gradient(90deg, #0A6670, #0E9AA7); }
+    .fill-gold   { background: linear-gradient(90deg, #8B6914, #DAA520); }
+
+    /* footer tag */
+    .card-footer-tag {
+      margin: 0 1.3rem 1.1rem;
+      background: rgba(0,119,182,0.06);
+      border: 1px solid rgba(0,119,182,0.12);
+      border-radius: 8px; padding: .5rem .8rem;
+      font-size: .78rem; color: var(--text-light); line-height: 1.5;
+    }
+    .card-footer-tag strong { color: var(--text-mid); }
+
+    /* leadership special */
+    .teacher-card.leader-card .card-top { padding: 1.5rem 1.5rem 1rem; }
+    .teacher-card.leader-card .avatar { width: 76px; height: 76px; font-size: 1.65rem; }
+    .teacher-card.leader-card .teacher-name { font-size: 1.07rem; }
+
+    /* no-results */
+    .no-results {
+      text-align: center; padding: 4rem 2rem; color: var(--text-light);
+      font-size: 1rem; grid-column: 1 / -1;
+    }
+
+    footer {
+      position: relative; z-index: 5; text-align: center;
+      padding: 1.4rem; margin-top: .5rem;
+      border-top: 1px solid rgba(0,119,182,0.15);
+      color: rgba(2,62,138,0.58); font-size: .76rem; letter-spacing: .08em;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-in { animation: fadeUp .5s ease both; }
+
+    @media (max-width: 1000px) { .leadership-row { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 700px) {
+      .leadership-row { grid-template-columns: 1fr; }
+      .teacher-grid   { grid-template-columns: 1fr; }
+      header { padding: 1rem 1.2rem; }
+      .filter-bar { padding: .8rem 1rem; }
+      .search-input { width: 100%; margin-left: 0; margin-top: .4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-brand">
+      <img class="header-logo" src="data:image/jpeg;base64,LOGO_PLACEHOLDER" alt="MT/Kandenuwara Tamil Maha Vidyalaya Logo" width="56" height="56"/>
+      <div class="brand-text">
+        <h1>MT/Kandenuwara T.M.V</h1>
+        <p>Teachers &amp; Staff</p>
+      </div>
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Academics</a>
+      <a href="#" class="active">Teachers</a>
+      <a href="#">Admissions</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero-banner">
+    <p class="breadcrumb"><a href="#">Home</a> &nbsp;/&nbsp; Teachers &amp; Staff</p>
+    <h2>Our Dedicated Faculty</h2>
+    <p class="sub">Meet the committed team of educators who shape the future of every student at MT/Kandenuwara Tamil Maha Vidyalaya — from leadership to classroom excellence.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>29</strong><span>Total Staff</span></div>
+      <div class="hero-stat"><strong>26</strong><span>Teachers</span></div>
+      <div class="hero-stat"><strong>3</strong><span>Leadership</span></div>
+      <div class="hero-stat"><strong>12+</strong><span>Subjects Covered</span></div>
+    </div>
+  </section>
+
+  <main>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+      <span class="filter-label">Filter By:</span>
+      <button class="filter-btn active" data-filter="all">All Staff</button>
+      <button class="filter-btn" data-filter="leadership">Leadership</button>
+      <button class="filter-btn" data-filter="science">Science</button>
+      <button class="filter-btn" data-filter="arts">Arts &amp; Language</button>
+      <button class="filter-btn" data-filter="maths">Mathematics</button>
+      <button class="filter-btn" data-filter="commerce">Commerce</button>
+      <button class="filter-btn" data-filter="social">Social Studies</button>
+      <button class="filter-btn" data-filter="pe">P.E &amp; Extra</button>
+      <input class="search-input" type="text" placeholder="🔍  Search teacher…" id="searchInput"/>
+    </div>
+
+    <!-- LEADERSHIP -->
+    <div class="section-title">
+      <h3>School Leadership</h3>
+      <div class="pill">3 Members</div>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="leadership-row" id="leadershipRow">
+
+      <!-- PRINCIPAL -->
+      <div class="teacher-card leader-card animate-in" data-cat="leadership" style="animation-delay:.05s">
+        <div class="card-band principal-band"></div>
+        <div class="card-top">
+          <div class="avatar principal-av">P</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. T. Sivarajah</p>
+            <p class="teacher-role role-principal">✦ Principal</p>
+            <p class="teacher-subject">School Administration</p>
+            <p class="teacher-exp">Experience: 28 years</p>
+            <div class="badge-row">
+              <span class="badge badge-gold">Head of School</span>
+              <span class="badge badge-blue">B.Ed · M.Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Department</span><span class="detail-val">Administration &amp; Policy</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">1996 — Kandenuwara T.M.V</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Speciality</span><span class="detail-val">Educational Leadership &amp; Policy</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Email</span><span class="detail-val">principal@ktmv.edu.lk</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Performance &amp; Contributions</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Administrative Leadership</span><span class="act-pct">98%</span></div>
+            <div class="act-bar"><div class="act-fill fill-gold" data-w="98"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Staff Development Programmes</span><span class="act-pct">95%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="95"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Community Engagement</span><span class="act-pct">92%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="92"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Curriculum Oversight</span><span class="act-pct">97%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="97"></div></div>
+          </div>
+        </div>
+        <div class="card-footer-tag"><strong>Note:</strong> Oversees all curriculum implementation, government liaisons, and student welfare policies across the school.</div>
+      </div>
+
+      <!-- VICE PRINCIPAL -->
+      <div class="teacher-card leader-card animate-in" data-cat="leadership" style="animation-delay:.1s">
+        <div class="card-band vp-band"></div>
+        <div class="card-top">
+          <div class="avatar vp-av">V</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. S. Kandiah</p>
+            <p class="teacher-role role-vp">◆ Vice Principal</p>
+            <p class="teacher-subject">Senior Management</p>
+            <p class="teacher-exp">Experience: 22 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">Vice Head</span>
+              <span class="badge badge-green">B.Ed · Dip. Ed Mgmt</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Department</span><span class="detail-val">Senior Management &amp; Welfare</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2002 — Kandenuwara T.M.V</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Speciality</span><span class="detail-val">Student Welfare &amp; Discipline</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Email</span><span class="detail-val">viceprincipal@ktmv.edu.lk</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Performance &amp; Contributions</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Student Welfare Management</span><span class="act-pct">96%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="96"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Timetable &amp; Scheduling</span><span class="act-pct">94%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="94"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Exam Coordination</span><span class="act-pct">91%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="91"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Teacher Mentoring</span><span class="act-pct">89%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="89"></div></div>
+          </div>
+        </div>
+        <div class="card-footer-tag"><strong>Note:</strong> Manages day-to-day school operations, student welfare programmes, and supports the principal in academic administration.</div>
+      </div>
+
+      <!-- ASSISTANT PRINCIPAL -->
+      <div class="teacher-card leader-card animate-in" data-cat="leadership" style="animation-delay:.15s">
+        <div class="card-band ap-band"></div>
+        <div class="card-top">
+          <div class="avatar ap-av">A</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. K. Thavarajah</p>
+            <p class="teacher-role role-ap">● Asst. Principal</p>
+            <p class="teacher-subject">Academic Coordination</p>
+            <p class="teacher-exp">Experience: 17 years</p>
+            <div class="badge-row">
+              <span class="badge badge-gold">Asst. Head</span>
+              <span class="badge badge-purple">B.Sc · B.Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Department</span><span class="detail-val">Academic &amp; Curriculum Affairs</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2007 — Kandenuwara T.M.V</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Speciality</span><span class="detail-val">Science Curriculum &amp; Co-curricular</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Email</span><span class="detail-val">asstprincipal@ktmv.edu.lk</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Performance &amp; Contributions</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Curriculum Implementation</span><span class="act-pct">95%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="95"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Co-curricular Coordination</span><span class="act-pct">93%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="93"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Teacher Observation</span><span class="act-pct">88%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="88"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Student Achievement Tracking</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="90"></div></div>
+          </div>
+        </div>
+        <div class="card-footer-tag"><strong>Note:</strong> Coordinates science departments, implements national curriculum standards, and leads all co-curricular activities.</div>
+      </div>
+
+    </div><!-- /leadership-row -->
+
+    <!-- TEACHERS SECTION -->
+    <div class="section-title" style="margin-top:3rem">
+      <h3>Teaching Staff</h3>
+      <div class="pill" id="teacherCount">26 Teachers</div>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="teacher-grid" id="teacherGrid">
+
+      <!-- T01 -->
+      <div class="teacher-card animate-in" data-cat="arts" data-name="thilaga" style="animation-delay:.05s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">T</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. V. Thilaga</p>
+            <p class="teacher-role role-teacher">Class Teacher · Grade 6</p>
+            <p class="teacher-subject">Tamil Language &amp; Literature</p>
+            <p class="teacher-exp">Experience: 14 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.A Tamil</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (Tamil)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Literary Club Coordinator</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2011</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Tamil Literature</span><span class="act-pct">96%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="96"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Grammar &amp; Writing</span><span class="act-pct">93%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="93"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Literary Club</span><span class="act-pct">88%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="88"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T02 -->
+      <div class="teacher-card animate-in" data-cat="maths" data-name="krishna" style="animation-delay:.08s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar navy">K</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. N. Krishnaraj</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Mathematics (O/L &amp; A/L)</p>
+            <p class="teacher-exp">Experience: 19 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Sc Maths</span>
+              <span class="badge badge-gold">Subject Head</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 10, 11 &amp; A/L Combined Maths</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Maths Olympiad Coach</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2005</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">O/L Mathematics</span><span class="act-pct">97%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="97"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Combined Maths A/L</span><span class="act-pct">91%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="91"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Olympiad Preparation</span><span class="act-pct">87%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="87"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T03 -->
+      <div class="teacher-card animate-in" data-cat="science" data-name="ranjitham" style="animation-delay:.11s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">R</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. P. Ranjitham</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Biology &amp; Health Science</p>
+            <p class="teacher-exp">Experience: 16 years</p>
+            <div class="badge-row">
+              <span class="badge badge-green">B.Sc Biology</span>
+              <span class="badge badge-blue">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 10 – 13 (Bio)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Science Lab Supervisor</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2009</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">A/L Biology</span><span class="act-pct">94%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="94"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Lab Practicals</span><span class="act-pct">96%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="96"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Health Awareness</span><span class="act-pct">85%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="85"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T04 -->
+      <div class="teacher-card animate-in" data-cat="science" data-name="arumugam" style="animation-delay:.14s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar indigo">A</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. S. Arumugam</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Physics &amp; Combined Science</p>
+            <p class="teacher-exp">Experience: 21 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Sc Physics</span>
+              <span class="badge badge-gold">Subject Head</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 10, 11 &amp; A/L Physics</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Science Exhibition Lead</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2003</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">A/L Physics</span><span class="act-pct">95%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="95"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Lab &amp; Experiments</span><span class="act-pct">92%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="92"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Science Exhibition</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="90"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T05 -->
+      <div class="teacher-card animate-in" data-cat="science" data-name="meena" style="animation-delay:.17s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar teal">M</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. L. Meenakshi</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Chemistry</p>
+            <p class="teacher-exp">Experience: 13 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Sc Chem</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 10 – 13 (Chemistry)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Environmental Club Advisor</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2012</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">A/L Chemistry</span><span class="act-pct">93%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="93"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Practical Exams</span><span class="act-pct">91%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="91"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Environmental Club</span><span class="act-pct">84%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="84"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T06 -->
+      <div class="teacher-card animate-in" data-cat="maths" data-name="jeyarajan" style="animation-delay:.2s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar green">J</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. M. Jeyarajan</p>
+            <p class="teacher-role role-teacher">Class Teacher · Grade 7</p>
+            <p class="teacher-subject">Mathematics &amp; Statistics</p>
+            <p class="teacher-exp">Experience: 11 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Sc Maths</span>
+              <span class="badge badge-green">PG Dip. Stats</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 7 – 11 (Maths)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Maths Club Facilitator</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2014</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Junior Mathematics</span><span class="act-pct">92%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="92"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Statistics</span><span class="act-pct">88%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="88"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Maths Club</span><span class="act-pct">86%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="86"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T07 -->
+      <div class="teacher-card animate-in" data-cat="arts" data-name="janaki" style="animation-delay:.23s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">J</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. K. Janaki</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">English Language &amp; Literature</p>
+            <p class="teacher-exp">Experience: 18 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.A English</span>
+              <span class="badge badge-gold">Subject Head</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (English)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">English Drama &amp; Debate Coach</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2006</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">English Language</span><span class="act-pct">95%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="95"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Drama Club</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="90"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Debate Team</span><span class="act-pct">88%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="88"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T08 -->
+      <div class="teacher-card animate-in" data-cat="social" data-name="murugesan" style="animation-delay:.26s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar rust">M</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. R. Murugesan</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">History &amp; Civics</p>
+            <p class="teacher-exp">Experience: 20 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.A History</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (History)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Heritage &amp; Culture Club</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2004</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">History</span><span class="act-pct">93%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="93"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Civics &amp; Citizenship</span><span class="act-pct">89%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="89"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Heritage Club</span><span class="act-pct">91%</span></div>
+            <div class="act-bar"><div class="act-fill fill-gold" data-w="91"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T09 -->
+      <div class="teacher-card animate-in" data-cat="social" data-name="nirmala" style="animation-delay:.29s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">N</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. T. Nirmala</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Geography &amp; Environment</p>
+            <p class="teacher-exp">Experience: 12 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.A Geography</span>
+              <span class="badge badge-green">PG Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 8 – 11 (Geography)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Eco-Schools Coordinator</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2013</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Geography</span><span class="act-pct">91%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="91"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Environmental Studies</span><span class="act-pct">87%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="87"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Eco-Schools</span><span class="act-pct">94%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="94"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T10 -->
+      <div class="teacher-card animate-in" data-cat="commerce" data-name="suba" style="animation-delay:.32s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">S</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. G. Subashini</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Commerce &amp; Accounting</p>
+            <p class="teacher-exp">Experience: 15 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Com</span>
+              <span class="badge badge-gold">Subject Head</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 10 – 13 (Commerce)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">School Finance Club</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2010</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Accounting</span><span class="act-pct">94%</span></div>
+            <div class="act-bar"><div class="act-fill fill-gold" data-w="94"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Business Studies</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="90"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Finance Club</span><span class="act-pct">86%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="86"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T11 -->
+      <div class="teacher-card animate-in" data-cat="commerce" data-name="bala" style="animation-delay:.35s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar olive">B</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. C. Balasubramanian</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Economics &amp; Business Studies</p>
+            <p class="teacher-exp">Experience: 17 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Econ</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 10 – 13 (Economics)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Young Entrepreneurs Club</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2007</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Economics</span><span class="act-pct">92%</span></div>
+            <div class="act-bar"><div class="act-fill fill-olive" data-w="92" style="background:linear-gradient(90deg,#4B5320,#778B3A)"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Business Studies</span><span class="act-pct">89%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="89"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Entrepreneurs Club</span><span class="act-pct">85%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="85"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T12 -->
+      <div class="teacher-card animate-in" data-cat="arts" data-name="suganthi" style="animation-delay:.38s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">S</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. A. Suganthi</p>
+            <p class="teacher-role role-teacher">Class Teacher · Grade 8</p>
+            <p class="teacher-subject">Sinhala Language</p>
+            <p class="teacher-exp">Experience: 9 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.A Sinhala</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (Sinhala)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Multilingual Programmes</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2016</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Sinhala Language</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="90"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Multilingual Club</span><span class="act-pct">85%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="85"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Cultural Exchange</span><span class="act-pct">88%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="88"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T13 -->
+      <div class="teacher-card animate-in" data-cat="social" data-name="selvaraj" style="animation-delay:.41s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar maroon">S</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. V. Selvaraj</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Religion &amp; Moral Education</p>
+            <p class="teacher-exp">Experience: 23 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.A Philosophy</span>
+              <span class="badge badge-gold">Senior Teacher</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (Religion)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">School Counsellor &amp; Values Club</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2001</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Religious Education</span><span class="act-pct">97%</span></div>
+            <div class="act-bar"><div class="act-fill fill-gold" data-w="97"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Moral Studies</span><span class="act-pct">94%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="94"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Counselling</span><span class="act-pct">92%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="92"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T14 -->
+      <div class="teacher-card animate-in" data-cat="pe" data-name="ramesh" style="animation-delay:.44s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar green">R</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. P. Ramesh</p>
+            <p class="teacher-role role-teacher">P.E &amp; Sports Teacher</p>
+            <p class="teacher-subject">Physical Education</p>
+            <p class="teacher-exp">Experience: 10 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.P.Ed</span>
+              <span class="badge badge-green">Sports Coach</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (P.E)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Cricket &amp; Athletics Coach</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2015</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Physical Education</span><span class="act-pct">95%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="95"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Cricket Team</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="90"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Athletics Training</span><span class="act-pct">88%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="88"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T15 -->
+      <div class="teacher-card animate-in" data-cat="pe" data-name="kavitha" style="animation-delay:.47s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">K</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. S. Kavitha</p>
+            <p class="teacher-role role-teacher">Arts &amp; Dance Teacher</p>
+            <p class="teacher-subject">Fine Arts &amp; Cultural Dance</p>
+            <p class="teacher-exp">Experience: 8 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.F.A</span>
+              <span class="badge badge-purple">Bharatanatyam</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (Arts)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Cultural Programme Director</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2017</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Fine Arts</span><span class="act-pct">96%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="96"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Bharatanatyam Dance</span><span class="act-pct">98%</span></div>
+            <div class="act-bar"><div class="act-fill fill-gold" data-w="98"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Cultural Events</span><span class="act-pct">95%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="95"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T16 -->
+      <div class="teacher-card animate-in" data-cat="maths" data-name="yogeswaran" style="animation-delay:.5s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar navy">Y</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. T. Yogeswaran</p>
+            <p class="teacher-role role-teacher">Class Teacher · Grade 9</p>
+            <p class="teacher-subject">Mathematics &amp; ICT</p>
+            <p class="teacher-exp">Experience: 7 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Tech IT</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 9 – 11 (Maths &amp; ICT)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">ICT &amp; Coding Club Lead</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2018</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">ICT &amp; Digital Literacy</span><span class="act-pct">93%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="93"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Mathematics</span><span class="act-pct">89%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="89"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Coding Club</span><span class="act-pct">91%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="91"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T17 -->
+      <div class="teacher-card animate-in" data-cat="arts" data-name="pushpa" style="animation-delay:.53s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">P</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. R. Pushpavalli</p>
+            <p class="teacher-role role-teacher">Class Teacher · Grade 6A</p>
+            <p class="teacher-subject">Tamil &amp; Primary Education</p>
+            <p class="teacher-exp">Experience: 6 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Ed Primary</span>
+              <span class="badge badge-green">Dip. Tamil</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 8 (Tamil)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Junior Reading Club</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2019</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Tamil (Junior)</span><span class="act-pct">89%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="89"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Reading Club</span><span class="act-pct">92%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="92"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Creative Writing</span><span class="act-pct">86%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="86"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T18 -->
+      <div class="teacher-card animate-in" data-cat="science" data-name="logeswaran" style="animation-delay:.56s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar indigo">L</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. K. Logeswaran</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Combined Science (O/L)</p>
+            <p class="teacher-exp">Experience: 9 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Sc Gen. Science</span>
+              <span class="badge badge-green">PG Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 8 – 11 (Science)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Young Scientists Society</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2016</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Combined Science</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="90"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Lab Experiments</span><span class="act-pct">88%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="88"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Science Society</span><span class="act-pct">85%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="85"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T19 -->
+      <div class="teacher-card animate-in" data-cat="commerce" data-name="vasantha" style="animation-delay:.59s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">V</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. N. Vasantha</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Business Statistics &amp; Maths</p>
+            <p class="teacher-exp">Experience: 11 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Sc Stats</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 10 – 13 (Stats)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Data &amp; Analytics Club</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2014</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Business Statistics</span><span class="act-pct">91%</span></div>
+            <div class="act-bar"><div class="act-fill fill-gold" data-w="91"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">A/L Mathematics</span><span class="act-pct">87%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="87"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Analytics Club</span><span class="act-pct">83%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="83"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T20 -->
+      <div class="teacher-card animate-in" data-cat="pe" data-name="kumaran" style="animation-delay:.62s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar rust">K</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. A. Kumaran</p>
+            <p class="teacher-role role-teacher">Music &amp; Band Teacher</p>
+            <p class="teacher-subject">Music &amp; Performing Arts</p>
+            <p class="teacher-exp">Experience: 12 years</p>
+            <div class="badge-row">
+              <span class="badge badge-purple">B.Mus</span>
+              <span class="badge badge-green">Carnatic Music</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (Music)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">School Band Director</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2013</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Music Theory</span><span class="act-pct">92%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="92"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">School Band</span><span class="act-pct">96%</span></div>
+            <div class="act-bar"><div class="act-fill fill-gold" data-w="96"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Carnatic Ensemble</span><span class="act-pct">94%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="94"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T21 -->
+      <div class="teacher-card animate-in" data-cat="arts" data-name="mathu" style="animation-delay:.65s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">M</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. D. Mathura</p>
+            <p class="teacher-role role-teacher">Class Teacher · Grade 10</p>
+            <p class="teacher-subject">Tamil &amp; Media Studies</p>
+            <p class="teacher-exp">Experience: 10 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.A Mass Comm</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (Tamil &amp; Media)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">School Magazine &amp; Media Club</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2015</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Tamil Language</span><span class="act-pct">91%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="91"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Media Studies</span><span class="act-pct">88%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="88"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">School Magazine</span><span class="act-pct">94%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="94"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T22 -->
+      <div class="teacher-card animate-in" data-cat="social" data-name="pathma" style="animation-delay:.68s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">P</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. I. Pathmalatha</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Home Science &amp; Health Ed.</p>
+            <p class="teacher-exp">Experience: 14 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Sc Home Sci</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 8 – 11 (Home Sci)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Girls' Welfare &amp; Health Club</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2011</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Home Science</span><span class="act-pct">93%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="93"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Health Education</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="90"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Girls' Welfare</span><span class="act-pct">96%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="96"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T23 -->
+      <div class="teacher-card animate-in" data-cat="maths" data-name="piruntha" style="animation-delay:.71s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar olive">P</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. S. Piruntharajan</p>
+            <p class="teacher-role role-teacher">Class Teacher · Grade 11</p>
+            <p class="teacher-subject">Additional Mathematics</p>
+            <p class="teacher-exp">Experience: 8 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.Sc Maths</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 10 – 11 (Adv. Maths)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">O/L Revision &amp; Exam Coaching</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2017</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Additional Maths</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="90"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">O/L Exam Coaching</span><span class="act-pct">93%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="93"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Revision Programmes</span><span class="act-pct">88%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="88"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T24 -->
+      <div class="teacher-card animate-in" data-cat="arts" data-name="vijaya" style="animation-delay:.74s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar female">V</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mrs. C. Vijayalakshmi</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">English &amp; Communication</p>
+            <p class="teacher-exp">Experience: 16 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">M.A English</span>
+              <span class="badge badge-gold">Senior Teacher</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (English)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Speech &amp; Elocution Coach</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2009</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">English Communication</span><span class="act-pct">95%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="95"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Elocution &amp; Speech</span><span class="act-pct">97%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="97"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Debate Society</span><span class="act-pct">91%</span></div>
+            <div class="act-bar"><div class="act-fill fill-orange" data-w="91"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T25 -->
+      <div class="teacher-card animate-in" data-cat="social" data-name="thiru" style="animation-delay:.77s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar maroon">T</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. E. Thirugnana</p>
+            <p class="teacher-role role-teacher">Subject Teacher</p>
+            <p class="teacher-subject">Logic &amp; Scientific Method</p>
+            <p class="teacher-exp">Experience: 13 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.A Philosophy</span>
+              <span class="badge badge-green">Dip. Ed</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 10 – 13 (Logic)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Debate &amp; Philosophy Club</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2012</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Logic &amp; Reasoning</span><span class="act-pct">94%</span></div>
+            <div class="act-bar"><div class="act-fill fill-teal" data-w="94"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Scientific Method</span><span class="act-pct">90%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="90"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Philosophy Club</span><span class="act-pct">87%</span></div>
+            <div class="act-bar"><div class="act-fill fill-purple" data-w="87"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- T26 -->
+      <div class="teacher-card animate-in" data-cat="pe" data-name="suthan" style="animation-delay:.8s">
+        <div class="card-band"></div>
+        <div class="card-top">
+          <div class="avatar green">S</div>
+          <div class="card-meta">
+            <p class="teacher-name">Mr. G. Suthakaran</p>
+            <p class="teacher-role role-teacher">P.E &amp; Scout Master</p>
+            <p class="teacher-subject">Physical Education &amp; Scouting</p>
+            <p class="teacher-exp">Experience: 15 years</p>
+            <div class="badge-row">
+              <span class="badge badge-blue">B.P.Ed</span>
+              <span class="badge badge-gold">Scout Leader</span>
+            </div>
+          </div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-details">
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Grades</span><span class="detail-val">Grade 6 – 11 (P.E)</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Activity</span><span class="detail-val">Scout Troop &amp; Outdoor Ed</span></div>
+          <div class="detail-row"><div class="detail-dot"></div><span class="detail-label">Joined</span><span class="detail-val">2010</span></div>
+        </div>
+        <div class="card-divider"></div>
+        <div class="card-activities">
+          <p class="act-title">Activity Performance</p>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Physical Education</span><span class="act-pct">92%</span></div>
+            <div class="act-bar"><div class="act-fill fill-green" data-w="92"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Scout Activities</span><span class="act-pct">97%</span></div>
+            <div class="act-bar"><div class="act-fill fill-gold" data-w="97"></div></div>
+          </div>
+          <div class="act-item">
+            <div class="act-row"><span class="act-name">Outdoor Education</span><span class="act-pct">89%</span></div>
+            <div class="act-bar"><div class="act-fill fill-blue" data-w="89"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="no-results" id="noResults" style="display:none;">No teachers match your search.</div>
+
+    </div><!-- /teacher-grid -->
+
+  </main>
+
+  <footer>
+    © 2025 MT/Kandenuwara Tamil Maha Vidyalaya · Teachers &amp; Staff Directory
+  </footer>
+
+  <script>
+    // ── Animate progress bars on scroll ──
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.act-fill[data-w]').forEach(bar => {
+            bar.style.width = bar.getAttribute('data-w') + '%';
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.teacher-card').forEach(card => observer.observe(card));
+
+    // ── Filter buttons ──
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const allCards   = document.querySelectorAll('#teacherGrid .teacher-card');
+    const searchInput = document.getElementById('searchInput');
+
+    function applyFilters() {
+      const active = document.querySelector('.filter-btn.active')?.dataset.filter || 'all';
+      const q = searchInput.value.toLowerCase().trim();
+      let visible = 0;
+      allCards.forEach(card => {
+        const catMatch  = active === 'all' || card.dataset.cat === active;
+        const nameMatch = !q || card.dataset.name.includes(q) || card.textContent.toLowerCase().includes(q);
+        const show = catMatch && nameMatch;
+        card.style.display = show ? '' : 'none';
+        if (show) visible++;
+      });
+      document.getElementById('noResults').style.display = visible ? 'none' : 'block';
+      document.getElementById('teacherCount').textContent = visible + ' Teacher' + (visible !== 1 ? 's' : '');
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        applyFilters();
+      });
+    });
+
+    searchInput.addEventListener('input', applyFilters);
+  </script>
+</body>
+</html>
