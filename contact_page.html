@@ -791,6 +791,64 @@
   </footer>
 
   <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyfwBE0ixhy8aBcuEKc9NfYIeugvJ8X_N63OM4evRY2Kd3ArJW9FTBSk3_3QrBG3Kdv/exec";
+
+async function handleContact(e) {
+  e.preventDefault();
+
+  const form = document.getElementById("contactForm");
+  const toast = document.getElementById("toast");
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const payload = {
+    firstName: form.querySelector('input[placeholder="Your first name"]').value.trim(),
+    lastName: form.querySelector('input[placeholder="Your last name"]').value.trim(),
+    email: form.querySelector('input[type="email"]').value.trim(),
+    phone: form.querySelector('input[type="tel"]').value.trim(),
+    enquiryType: form.querySelector('select').value,
+    message: form.querySelector('textarea').value.trim(),
+    privacyAccepted: form.querySelector('#privacy').checked
+  };
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
+
+  try {
+    const response = await fetch(SCRIPT_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8"
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      toast.style.display = "flex";
+      toast.innerHTML = `
+        <svg viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+        ${result.message}
+      `;
+      toast.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+      submitBtn.textContent = "Message Sent";
+      submitBtn.style.background = "linear-gradient(135deg, #2D6A4F, #40916C)";
+      form.reset();
+    } else {
+      alert(result.message || "Submission failed.");
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Send Message";
+    }
+  } catch (err) {
+    alert("Unable to send message. Please try again.");
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Send Message";
+  }
+}
+    
     function handleContact(e) {
       e.preventDefault();
       const toast = document.getElementById('toast');
