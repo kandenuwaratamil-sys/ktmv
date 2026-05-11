@@ -40,7 +40,40 @@
              .btn{min-width:140px}}
 
       
-    
+    /* Reset basic margins */
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Container for the progress bar background */
+.progress-container {
+  position: fixed; /* Locks it to the screen */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px; /* Thickness of the bar */
+  background-color: #e5e7eb; /* Light gray track */
+  z-index: 1000; /* Keeps it on top of other content */
+}
+
+/* The actual filling bar */
+.progress-bar {
+  height: 100%;
+  background-color: #4f46e5; /* Indigo fill color */
+  width: 0%; /* Starts at 0 */
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Styling just to make the page scrollable for testing */
+.content {
+  padding: 60px 20px;
+  height: 3000px; /* Forces a very long page */
+  background: linear-gradient(to bottom, #f9fafb, #d1d5db);
+  text-align: center;
+}
       
 </style></head><body><header><span class="school-tag">Kandenuwara &nbsp;&nbsp; Excellence in Education</span><nav><a href="#overview" class="active">Overview</a><a href="Teachers Profile.html">Profiles</a><a href="#curriculum">Curriculum</a><a href="#contact">Contact</a></nav></header><section class="hero" id="overview"><h1>Curriculum Implementation Profiles</h1><p>A school web page section for curriculum implementation, leadership profiles, and teacher profiles with a shuffle-style image view and previous/next profile buttons while keeping the same header button style.</p><div class="divider"></div></section><main class="wrap"><section class="layout" id="profiles"><article class="card"><div class="card-head"><h2>Leadership and Teachers</h2><span style="font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)">30 Profiles</span></div><div class="card-body"><div class="grid"><div class="mini"><h3>Principal</h3><p>School academic leadership, implementation oversight, and performance monitoring.</p></div><div class="mini"><h3>Vice Principal</h3><p>Operational support, discipline coordination, and timetable supervision.</p></div><div class="mini"><h3>Assistant Principal</h3><p>Progress management, academic coordination, and reporting support.</p></div><div class="mini"><h3>Curriculum Implementation</h3><p>Scheme of work tracking, lesson observation, assessment review, and delivery progress.</p></div></div><div class="btn-row"><a href="#curriculum" class="btn btn-primary">View Curriculum</a><a href="#contact" class="btn btn-outline">School Contact</a></div></div></article><article class="card"><div class="card-head"><h2>Profile Slideshow</h2><span style="font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)">Previous / Next</span></div><div class="card-body"><div class="photo-stage" id="photoStage">      <article class="profile-card active"><div class="profile-photo-wrap"><img class="profile-photo" src="photo_2025-08-16_10-23-57.jpg" alt="Curriculum Implementation"></div><div class="profile-body"><h3>Curriculum Implementation</h3><p>Whole-school curriculum alignment, lesson delivery monitoring, assessment tracking, and term planning.</p></div></article>
 
@@ -78,4 +111,39 @@
       
       
       
-      <section class="card panel" id="contact"><div class="card-head"><h2>School Information</h2></div><div class="card-body"><div class="mini"><h3>Address</h3><p>MT/Kandenuwara Tamil Maha Vidyalaya, Kandenuwara, Matale District, Sri Lanka.</p></div></div></section></main><footer>© 2026 MT/Kandenuwara Tamil Maha Vidyalaya &nbsp;&nbsp; Curriculum Implementation Profiles</footer><script>const cards=Array.from(document.querySelectorAll('.profile-card'));const prevBtn=document.getElementById('prevBtn');const nextBtn=document.getElementById('nextBtn');let current=0;function show(i){cards.forEach((c,idx)=>c.classList.toggle('active', idx===i));current=i;}prevBtn.addEventListener('click',()=>show((current-1+cards.length)%cards.length));nextBtn.addEventListener('click',()=>show((current+1)%cards.length));setInterval(()=>show((current+1)%cards.length),3800);</script></body></html>
+      <section class="card panel" id="contact"><div class="card-head"><h2>School Information</h2></div><div class="card-body"><div class="mini"><h3>Address</h3><p>MT/Kandenuwara Tamil Maha Vidyalaya, Kandenuwara, Matale District, Sri Lanka.</p></div></div>
+
+            <div class="progress-container">
+    <div class="progress-bar" id="myBar"></div>
+  </div>
+
+  <div class="content">
+    <h1>Scroll Down!</h1>
+    <p>Keep scrolling to see the progress bar fill up to exactly 80%.</p>
+    </div>
+
+            <script>
+   // Run the function whenever the user scrolls
+window.onscroll = function() {
+  updateProgressBar();
+};
+
+function updateProgressBar() {
+  // 1. Get how many pixels the user has scrolled from the top
+  const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  
+  // 2. Get the total scrollable height of the page
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  
+  // 3. Calculate the standard scroll percentage (from 0.0 to 1.0)
+  const scrolledRatio = winScroll / height;
+  
+  // 4. Multiply by 80 to cap the maximum width at 80%
+  const finalWidth = scrolledRatio * 80;
+  
+  // 5. Apply the calculated width to the progress bar element
+  document.getElementById("myBar").style.width = finalWidth + "%";
+}
+  </script>
+      
+      </section></main><footer>© 2026 MT/Kandenuwara Tamil Maha Vidyalaya &nbsp;&nbsp; Curriculum Implementation Profiles</footer><script>const cards=Array.from(document.querySelectorAll('.profile-card'));const prevBtn=document.getElementById('prevBtn');const nextBtn=document.getElementById('nextBtn');let current=0;function show(i){cards.forEach((c,idx)=>c.classList.toggle('active', idx===i));current=i;}prevBtn.addEventListener('click',()=>show((current-1+cards.length)%cards.length));nextBtn.addEventListener('click',()=>show((current+1)%cards.length));setInterval(()=>show((current+1)%cards.length),3800);</script></body></html>
