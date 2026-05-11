@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Student Record</title>
+    <style>
+        /* Reuse the same theme */
+        :root { --header-bg: #1e457d; --bg-color: #dcf4ff; --grid-color: #bce6fb; --text-dark: #1e3a8a; }
+        body, html { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg-color); background-image: linear-gradient(var(--grid-color) 1px, transparent 1px), linear-gradient(90deg, var(--grid-color) 1px, transparent 1px); background-size: 40px 40px; min-height: 100vh; }
+        
+        .navbar { background-color: var(--header-bg); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; color: white; font-weight: bold; }
+        .back-link { color: #d1d5db; text-decoration: none; font-size: 14px; }
+        .back-link:hover { color: white; text-decoration: underline; }
+
+        .form-container { background-color: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05); width: 100%; max-width: 500px; margin: 50px auto; }
+        h2 { color: var(--text-dark); text-align: center; margin-top: 0; border-bottom: 2px solid #e5e7eb; padding-bottom: 15px;}
+        
+        .form-group { margin-bottom: 15px; display: flex; flex-direction: column; }
+        .form-group label { font-size: 14px; color: #4b5563; font-weight: 600; margin-bottom: 5px; }
+        .form-group input { padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 15px; }
+        .form-group input:focus { border-color: var(--header-bg); outline: none; }
+
+        .marks-row { display: flex; gap: 15px; }
+        .marks-row .form-group { flex: 1; }
+
+        .btn-submit { width: 100%; background-color: #10b981; color: white; border: none; padding: 15px; border-radius: 6px; font-weight: bold; font-size: 16px; cursor: pointer; margin-top: 15px; transition: 0.3s; }
+        .btn-submit:hover { background-color: #059669; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div>MT/KANDENUWARA T.M.V - Admin Panel</div>
+        <a href="Students Database.html" class="back-link">&larr; Back to Search</a>
+    </nav>
+
+    <div class="form-container">
+        <h2>Add Student Record</h2>
+        
+        <div class="form-group">
+            <label>Index Number</label>
+            <input type="text" id="sIndex" placeholder="e.g., 1005" required>
+        </div>
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="sName" placeholder="Student Name" required>
+        </div>
+        <div class="form-group">
+            <label>Grade</label>
+            <input type="text" id="sGrade" placeholder="e.g., 10" required>
+        </div>
+
+        <div class="marks-row">
+            <div class="form-group">
+                <label>Term 1 Marks</label>
+                <input type="number" id="sT1" placeholder="0-100">
+            </div>
+            <div class="form-group">
+                <label>Term 2 Marks</label>
+                <input type="number" id="sT2" placeholder="0-100">
+            </div>
+            <div class="form-group">
+                <label>Term 3 Marks</label>
+                <input type="number" id="sT3" placeholder="0-100">
+            </div>
+        </div>
+
+        <button class="btn-submit" onclick="saveRecord()">Add Record to Database</button>
+    </div>
+
+    <script>
+        function saveRecord() {
+            // 1. Gather all the data from the inputs
+            const index = document.getElementById('sIndex').value;
+            const name = document.getElementById('sName').value;
+            const grade = document.getElementById('sGrade').value;
+            const t1 = document.getElementById('sT1').value;
+            const t2 = document.getElementById('sT2').value;
+            const t3 = document.getElementById('sT3').value;
+
+            // Basic validation so empty records aren't saved
+            if(!index || !name || !grade) {
+                alert("Please fill in the Index, Name, and Grade!");
+                return;
+            }
+
+            // 2. Create the student object
+            const newStudent = {
+                index: index,
+                name: name,
+                grade: grade,
+                t1: t1 || 0, // Defaults to 0 if left blank
+                t2: t2 || 0,
+                t3: t3 || 0
+            };
+
+            // 3. Get existing database from local storage, add new student, and save it back
+            let db = JSON.parse(localStorage.getItem('studentsDb')) || [];
+            db.push(newStudent);
+            localStorage.setItem('studentsDb', JSON.stringify(db));
+
+            // 4. Alert success and redirect back to search page
+            alert(name + " has been added successfully!");
+            window.location.href = "Students Database.html";
+        }
+    </script>
+</body>
+</html>
