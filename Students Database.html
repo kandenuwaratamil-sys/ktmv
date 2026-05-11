@@ -118,6 +118,10 @@
             const initialDb = [
                 { index: "1001", name: "Kamal Perera", grade: "10", t1: 75, t2: 80, t3: 85 },
                 { index: "1002", name: "Nimali Silva", grade: "11", t1: 60, t2: 65, t3: 70 }
+                { index: "1003", name: "Kamal Perera", grade: "10", t1: 75, t2: 80, t3: 85 },
+                { index: "1004", name: "Nimali Silva", grade: "11", t1: 60, t2: 65, t3: 70 }
+                { index: "1005", name: "Kamal Perera", grade: "10", t1: 75, t2: 80, t3: 85 },
+                { index: "1006", name: "Nimali Silva", grade: "11", t1: 60, t2: 65, t3: 70 }
             ];
             localStorage.setItem('studentsDb', JSON.stringify(initialDb));
         }
@@ -172,7 +176,7 @@
             const id = document.getElementById('adminId').value;
             const pass = document.getElementById('adminPass').value;
             
-            if (id === "admin" && pass === "admin") {
+            if (id === "admin" && pass === "ktmv") {
                 window.location.href = "add_student.html"; // Redirects to the new page
             } else {
                 alert("Incorrect Admin ID or Password!");
