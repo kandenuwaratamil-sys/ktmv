@@ -122,6 +122,14 @@
             localStorage.setItem('studentsDb', JSON.stringify(initialDb));
         }
 
+        // Allow pressing "Enter" key to search
+        document.getElementById("searchInput").addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                performSearch();
+            }
+        });
+        
         // --- Search Logic ---
         function performSearch() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
