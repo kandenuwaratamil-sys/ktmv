@@ -220,5 +220,62 @@ button:disabled {
   <button id="prev-btn" disabled>Previous</button>
   <button id="next-btn">Next Task</button>
 </div>     
+
+      <script>
+            const steps = document.querySelectorAll('.step');
+const progressLine = document.getElementById('progress-line');
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+
+let currentActive = 1;
+
+nextBtn.addEventListener('click', () => {
+  currentActive++;
+  if (currentActive > steps.length) {
+    currentActive = steps.length;
+  }
+  updateTracker();
+});
+
+prevBtn.addEventListener('click', () => {
+  currentActive--;
+  if (currentActive < 1) {
+    currentActive = 1;
+  }
+  updateTracker();
+});
+
+function updateTracker() {
+  // Update step circles
+  steps.forEach((step, index) => {
+    if (index < currentActive) {
+      step.classList.add('active');
+    } else {
+      step.classList.remove('active');
+    }
+
+    if (index < currentActive - 1) {
+      step.classList.add('completed');
+    } else {
+      step.classList.remove('completed');
+    }
+  });
+
+  // Update progress line width
+  // Formula: (active steps - 1) / (total steps - 1) * 100
+  const activeSteps = document.querySelectorAll('.step.active');
+  progressLine.style.width = ((activeSteps.length - 1) / (steps.length - 1)) * 100 + '%';
+
+  // Enable/Disable buttons
+  if (currentActive === 1) {
+    prevBtn.disabled = true;
+  } else if (currentActive === steps.length) {
+    nextBtn.disabled = true;
+  } else {
+    prevBtn.disabled = false;
+    nextBtn.disabled = false;
+  }
+}
+      </script>
       
       <section class="card panel" id="contact"><div class="card-head"><h2>School Information</h2></div><div class="card-body"><div class="mini"><h3>Address</h3><p>MT/Kandenuwara Tamil Maha Vidyalaya, Kandenuwara, Matale District, Sri Lanka.</p></div></div></section></main><footer>© 2026 MT/Kandenuwara Tamil Maha Vidyalaya &nbsp;&nbsp; Curriculum Implementation Profiles</footer><script>const cards=Array.from(document.querySelectorAll('.profile-card'));const prevBtn=document.getElementById('prevBtn');const nextBtn=document.getElementById('nextBtn');let current=0;function show(i){cards.forEach((c,idx)=>c.classList.toggle('active', idx===i));current=i;}prevBtn.addEventListener('click',()=>show((current-1+cards.length)%cards.length));nextBtn.addEventListener('click',()=>show((current+1)%cards.length));setInterval(()=>show((current+1)%cards.length),3800);</script></body></html>
