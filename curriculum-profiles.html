@@ -29,6 +29,68 @@
       .btn-primary:hover{background:var(--blue);transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,119,182,.4)}
       .btn-outline{background:rgba(255,255,255,.7);color:var(--blue-dark);border:1.5px solid rgba(2,62,138,.35)}
       .btn-outline:hover{background:white;border-color:var(--blue);color:var(--blue);transform:translateY(-2px)}
+
+      /* --- Academic Section Container --- */
+.academic-hero-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+  /* Grid Background matching your theme */
+  background-color: #dcf4ff; 
+  background-image: 
+      linear-gradient(#bce6fb 1px, transparent 1px),
+      linear-gradient(90deg, #bce6fb 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* --- Small Centered Logo --- */
+.academic-logo {
+  width: 90px; /* Smaller size to match the image */
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+  background-color: white;
+  padding: 5px; /* Creates the white ring effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Soft drop shadow */
+  margin-bottom: 25px;
+}
+
+/* --- "ACADEMIC EXCELLENCE" Pill Badge --- */
+.academic-badge {
+  display: inline-block;
+  border: 1px solid #7dd3fc; /* Light blue border */
+  color: #0284c7; /* Medium blue text */
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  padding: 6px 18px;
+  border-radius: 50px; /* Creates the pill shape */
+  text-transform: uppercase;
+  margin-bottom: 25px;
+  background-color: transparent;
+}
+
+/* --- Main Heading --- */
+.academic-title {
+  color: #1e3a8a; /* Dark navy blue */
+  font-family: Georgia, 'Times New Roman', Times, serif; /* Formal serif font */
+  font-size: 42px;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.5px;
+}
+
+/* --- Paragraph Text --- */
+.academic-description {
+  color: #4b5563; /* Dark gray for readability */
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: 650px; /* Prevents the text from stretching too wide across the screen */
+  margin: 0 auto;
+}
+            
       .layout{display:grid;grid-template-columns:1.05fr 1.35fr;gap:1.2rem;align-items:start}
       .panel{margin-top:1.2rem}.photo-stage{position:relative;min-height:500px;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.55);border:1.5px solid rgba(0,119,182,.16)}
       .profile-card{position:absolute;inset:0;opacity:0;transform:translateX(20px) scale(.985);transition:opacity .4s ease,transform .4s ease;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:1.4rem;text-align:center}
@@ -62,7 +124,13 @@
                   
                   <button class="nav-btn" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i> Back</button>
                    
-                  <span class="school-tag">Kandenuwara &nbsp;&nbsp; Excellence in Education</span><nav><a href="Students Database.html" class="active">Stu.Details</a><a href="Teachers Profile.html">Tea.Profiles</a><a href="#curriculum">Curriculum</a><a href="#contact">Contact</a></nav></header><section class="hero" id="overview"><h1>Curriculum Implementation Profiles</h1><p>A school web page section for curriculum implementation, leadership profiles, and teacher profiles with a shuffle-style image view and previous/next profile buttons while keeping the same header button style.</p><div class="divider"></div></section><main class="wrap"><section class="layout" id="profiles"><article class="card"><div class="card-head"><h2>Leadership and Teachers</h2><span style="font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)">30 Profiles</span></div><div class="card-body"><div class="grid"><div class="mini"><h3>Principal</h3><p>School academic leadership, implementation oversight, and performance monitoring.</p></div><div class="mini"><h3>Vice Principal</h3><p>Operational support, discipline coordination, and timetable supervision.</p></div><div class="mini"><h3>Assistant Principal</h3><p>Progress management, academic coordination, and reporting support.</p></div><div class="mini"><h3>Curriculum Implementation</h3><p>Scheme of work tracking, lesson observation, assessment review, and delivery progress.</p></div></div><div class="btn-row"><a href="#curriculum" class="btn btn-primary">View Curriculum</a><a href="#contact" class="btn btn-outline">School Contact</a></div></div></article><article class="card"><div class="card-head"><h2>Profile Slideshow</h2><span style="font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)">Previous / Next</span></div><div class="card-body"><div class="photo-stage" id="photoStage">      <article class="profile-card active"><div class="profile-photo-wrap"><img class="profile-photo" src="photo_2025-08-16_10-23-57.jpg" alt="Curriculum Implementation"></div><div class="profile-body"><h3>Curriculum Implementation</h3><p>Whole-school curriculum alignment, lesson delivery monitoring, assessment tracking, and term planning.</p></div></article>
+                  <span class="school-tag">Kandenuwara &nbsp;&nbsp; Excellence in Education</span><nav><a href="Students Database.html" class="active">Stu.Details</a><a href="Teachers Profile.html">Tea.Profiles</a><a href="#curriculum">Curriculum</a><a href="#contact">Contact</a></nav></header><section class="hero" id="overview"><h1>Curriculum Implementation Profiles</h1><p>A school web page section for curriculum implementation, leadership profiles, and teacher profiles with a shuffle-style image view and previous/next profile buttons while keeping the same header button style.</p><div class="divider"></div></section><main class="wrap"><section class="layout" id="profiles"><article class="card"><div class="card-head"><h2>Leadership and Teachers</h2><span style="font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)">30 Profiles</span></div><div class="card-body"><div class="grid"><div class="mini"><h3>Principal</h3><p>School academic leadership, implementation oversight, and performance monitoring.</p></div><div class="mini"><h3>Vice Principal</h3><p>Operational support, discipline coordination, and timetable supervision.</p></div><div class="mini"><h3>Assistant Principal</h3><p>Progress management, academic coordination, and reporting support.</p></div><div class="mini"><h3>Curriculum Implementation</h3><p>Scheme of work tracking, lesson observation, assessment review, and delivery progress.</p></div></div><div class="btn-row"><a href="#curriculum" class="btn btn-primary">View Curriculum</a><a href="#contact" class="btn btn-outline">School Contact</a></div></div></article><article class="card"><div class="card-head"><h2>Profile Slideshow</h2><span style="font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)">Previous / Next</span></div><div class="card-body"><div class="photo-stage" id="photoStage">      <article class="profile-card active"><div class="profile-photo-wrap">
+                        <section class="academic-hero-section">
+  <!-- School Logo -->
+  <img src="logo.jpg" alt="School Logo" class="academic-logo">
+                        <img class="profile-photo" src="photo_2025-08-16_10-23-57.jpg" alt="Curriculum Implementation"></div>
+                        
+                        <div class="profile-body"><h3>Curriculum Implementation</h3><p>Whole-school curriculum alignment, lesson delivery monitoring, assessment tracking, and term planning.</p></div></article>
 
             
       <article class="profile-card"><div class="profile-photo-wrap"><img class="profile-photo" src="Images/IMG-20250805-WA0006.jpg" alt="Principal"></div><div class="profile-body"><h3>Principal</h3><h4>MR.J.Nantharuban</h4><p>Leadership, school development, academic oversight, and community coordination.</p></div></article>
