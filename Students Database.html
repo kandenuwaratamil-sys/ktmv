@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <title>Students Database - Search</title>
     <style>
         /* --- Base & Background Styling --- */
@@ -21,6 +22,10 @@
             background-size: 40px 40px; min-height: 100vh;
         }
 
+
+        .nav-btn{display:inline-flex;align-items:Left;gap:.55rem;border:none;border-radius:999px;padding:.8rem 1rem;background:rgba(255,255,255,.16);color:#fff;font-weight:700;cursor:pointer;transition:.2s ease;text-decoration:none;white-space:nowrap}
+        .nav-btn:hover{background:rgba(255,255,255,.26);transform:translateY(-1px)}
+        
         /* --- Header Navigation --- */
         .navbar { background-color: var(--header-bg); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; }
         .navbar-brand { color: white; font-size: 14px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
@@ -63,6 +68,7 @@
 <body>
 
     <nav class="navbar">
+        <button class="nav-btn" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i> Back</button>
         <div class="navbar-brand">MT/KANDENUWARA T.M.V</div>
         <div class="navbar-links">
             <a href="#">ABOUT</a>
