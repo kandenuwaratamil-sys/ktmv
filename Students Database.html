@@ -112,14 +112,18 @@
     </div>
 
     <script>
-        // Initialize Local Storage Database if it doesn't exist yet
-        if (!localStorage.getItem('studentsDb')) {
-            const initialDb = [
-                { index: "1001", name: "Kamal Perera", grade: "10", t1: 75, t2: 80, t3: 85 },
-                { index: "1002", name: "Nimali Silva", grade: "11", t1: 60, t2: 65, t3: 70 }
-            ];
+      // Dummy Database: Replace this array with a real database fetch later
+        const studentsDb = [
+            { index: "1001", name: "Kamal Perera", grade: "10", marks: 85 },
+            { index: "1002", name: "Nimali Silva", grade: "10", marks: 92 },
+            { index: "1003", name: "Saman Kumara", grade: "11", marks: 78 },
+            { index: "1004", name: "Priyanka Fernando", grade: "11", marks: 88 },
+            { index: "1005", name: "Ruwan Rajapaksha", grade: "12", marks: 95 },
+            { index: "1006", name: "Anushka Sharma", grade: "10", marks: 65 },
+            { index: "1007", name: "David Johnson", grade: "12", marks: 85 }
+        ];
 
-            // Allow pressing "Enter" key to search
+        // Allow pressing "Enter" key to search
         document.getElementById("searchInput").addEventListener("keypress", function(event) {
             if (event.key === "Enter") {
                 event.preventDefault();
@@ -127,19 +131,20 @@
             }
         });
 
-
-            
-            localStorage.setItem('studentsDb', JSON.stringify(initialDb));
-        }
-
-        // --- Search Logic ---
         function performSearch() {
+            // Get the search query and convert to lowercase for case-insensitive matching
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const resultsContainer = document.getElementById('resultsContainer');
             const tableBody = document.getElementById('tableBody');
+
+            // Clear previous results
             tableBody.innerHTML = '';
 
-            if (query === '') { resultsContainer.style.display = 'none'; return; }
+            // If search box is empty, hide the table and stop
+            if (query === '') {
+                resultsContainer.style.display = 'none';
+                return;
+            }
 
             // Pull fresh data from local storage
             const studentsDb = JSON.parse(localStorage.getItem('studentsDb'));
