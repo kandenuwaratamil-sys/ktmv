@@ -126,6 +126,9 @@
                 performSearch();
             }
         });
+
+
+            
             localStorage.setItem('studentsDb', JSON.stringify(initialDb));
         }
 
@@ -171,7 +174,7 @@
             const id = document.getElementById('adminId').value;
             const pass = document.getElementById('adminPass').value;
             
-            if (id === "admin" && pass === "admin") {
+            if (id === "admin" && pass === "ktmv") {
                 window.location.href = "add_student.html"; // Redirects to the new page
             } else {
                 alert("Incorrect Admin ID or Password!");
